@@ -6,4 +6,4 @@ Hi, I'm Tejas Manohar and this is the source code for my personal website, [http
 
 ## Design
 
-If you decided to fork, please create your own design, don't use mine. I don't want to see fifty other sites that look the same as mine. Thanks for understanding!
+If you decided to fork, please create your own design, not mine. I don't want to see fifty other sites that look the same as mine. Thanks for understanding!
