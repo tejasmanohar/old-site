@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/tejasmanohar/tejasmanohar.github.io/issues"
   },
-  "homepage": "https://tejas.io"
+  "homepage": "https://tejas.io",
+  "dependencies": {
+    "gulp": "^3.8.10"
+  }
 }
