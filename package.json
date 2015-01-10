@@ -2,25 +2,20 @@
   "name": "tejasmanohar.github.io",
   "version": "0.0.0",
   "description": "my personal website",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/tejasmanohar/tejasmanohar.github.io.git"
   },
   "keywords": [
+    "tejas manohar",
+    "tejasmanohar",
     "tejas",
-    "manohar",
-    "tejas",
-    "manohar",
-    "tejasmanohar"
+    "manohar"
   ],
-  "author": "Tejas Manohar <me@tejasmanohar.com> (https://tejas.io/)",
+  "author": "Tejas Manohar <me@tejas.io> (https://tejas.io)",
   "license": "AGPL",
   "bugs": {
     "url": "https://github.com/tejasmanohar/tejasmanohar.github.io/issues"
   },
-  "homepage": "https://github.com/tejasmanohar/tejasmanohar.github.io"
+  "homepage": "https://tejas.io"
 }
