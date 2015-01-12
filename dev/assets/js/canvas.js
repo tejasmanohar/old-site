@@ -1,124 +1,80 @@
-var canvas = document.getElementById('draw');
-var header = document.getElementById('header');
-var ctx = canvas.getContext('2d');
-
-var colors = [{
-  r: 181,
-  g: 137,
-  b: 0
-}, {
-  r: 203,
-  g: 75,
-  b: 22
-}, {
-  r: 220,
-  g: 50,
-  b: 47
-}, {
-  r: 211,
-  g: 54,
-  b: 130
-}, {
-  r: 108,
-  g: 113,
-  b: 196
-}, {
-  r: 38,
-  g: 139,
-  b: 210
-}, {
-  r: 42,
-  g: 161,
-  b: 152
-}, {
-  r: 133,
-  g: 153,
-  b: 0
-}];
-
 window.requestAnimFrame = function() {
-  return (
-    window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame ||
-    window.oRequestAnimationFrame ||
-    window.msRequestAnimationFrame ||
-    function(c) {
-      window.setTimeout(c, 1000 / 60);
-    }
-  );
+  return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function(a) {
+    window.setTimeout(a, 1E3 / 60)
+  }
 }();
 
-var squares = [];
-var lastRender = Date.now();
-var lastCreate = Date.now();
+var c = document.getElementById('c');
+var ctx = c.getContext('2d');
+var cw = c.width = window.innerWidth;
+var ch = c.height = window.innerHeight * .7;
+var rand = function(a, b) {
+  return ~~((Math.random() * (b - a + 1)) + a);
+}
 
-function render() {
-  var timeDelta = new Date().getTime() - lastRender;
-  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-
-  if (Date.now() - lastCreate >= 20) {
-    var sze = randr(20, 50);
-
-    var color = colors[Math.floor(Math.random() * colors.length)];
-
-    squares.push({
-      width: sze,
-      height: sze,
-      vel: randr(100, 200), //pixs per second
-      x: randr(-sze + 10, canvas.width - 10),
-      y: randr(10, canvas.height - 10),
-      age: 1,
-      r: color.r,
-      g: color.g,
-      b: color.b
-    });
-
-    lastCreate = Date.now();
+updateAll = function(a) {
+  var i = a.length;
+  while (i--) {
+    a[i] && a[i].update(i);
   }
+}
 
-  for (var i = 0; i < squares.length; i++) {
-    var sq = squares[i];
+renderAll = function(a) {
+  var i = a.length;
+  while (i--) {
+    a[i] && a[i].render(i);
+  }
+}
 
-    ctx.fillStyle = ["rgba(", sq.r, ", ", sq.g, ", ", sq.b, ",", (sq.age / 400), ")"].join("");
-    ctx.fillRect(sq.x, sq.y, sq.width, sq.height);
+var stars = [];
 
-    sq.y -= sq.vel / 1000 * timeDelta;
-    sq.age++;
+Star = function(x, y, radius, speed) {
+  this.x = x;
+  this.y = y;
+  this.speed = (speed / 25);
+  this.radius = radius;
+  this.saturation = (20 + (this.radius) * 5);
+  this.lightness = (20 + this.radius * 4);
+}
 
-    if (sq.y + sq.height < 0) {
-      squares.splice(i, 1);
-      i--;
+Star.prototype = {
+  update: function(i) {
+    this.x += this.speed;
+    if (this.x - this.radius >= cw) {
+      this.x = rand(0, ch - this.radius)
+      this.x = -this.radius;
+    }
+  },
+  render: function() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, (this.radius < 0) ? 0 : this.radius, 0, Math.PI * 2, false);
+    var flickerAdd = (rand(0, 140) === 0) ? rand(5, 20) : 0;
+    ctx.fillStyle = 'hsl(240, ' + this.saturation + '%, ' + (this.lightness + flickerAdd) + '%)';
+    ctx.fill();
+  }
+}
+
+makeStarfield = function() {
+  var base = .75;
+  var inc = .2;
+  var count = 40;
+  var per = 6;
+  while (count--) {
+    var radius = base + inc;
+    var perTime = per;
+    while (perTime--) {
+      radius += inc;
+      stars.push(new Star(rand(0, cw - radius), rand(0, ch - radius), radius, radius * 3));
     }
   }
-
-  lastRender = new Date().getTime();
 }
 
-function randr(min, max) {
-  return Math.random() * (max - min) + min;
+var loop = function() {
+  window.requestAnimFrame(loop);
+  updateAll(stars);
+  ctx.clearRect(0, 0, cw, ch);
+  renderAll(stars);
 }
 
-function resize() {
-  var he = header.clientHeight;
-  var wi = window.innerWidth;
-
-  canvas.height = he;
-  canvas.width = wi;
-
-  if (window.devicePixelRatio == 2) {
-    canvas.width = wi * 2;
-    canvas.height = he * 2;
-    canvas.style.height = he;
-    canvas.style.width = wi;
-    ctx.scale(2, 2);
-  }
-}
-
-window.onresize = resize;
-resize();
-
-(function loop() {
-  requestAnimFrame(loop);
-  render();
-})();
+makeStarfield();
+loop();

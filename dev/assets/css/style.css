@@ -1,62 +1,194 @@
-/* global */
-
-body {
-  font-family: 'Open Sans', Arial, sans-serif;
-  padding: 0px;
-  margin: 0px;
-  background-color: #ffffff;
-  color: #657b83;
+html, body {
+  height: 100%;
 }
 
-h2 {
-  font-size: 30px;
-  color: #586e75;
+html {
+  background: linear-gradient(#000005, #050520);
+}
+
+h1 {
+  color: #ffffff;
+  font-size: 90px;
+  font-wight: bold;
+  margin-bottom: 10px;
+}
+
+canvas {
+  display: block;
+  height: 131%;
+}
+
+#cvas {
+  height: 500px;
+  position: relative;
+  width: 100%;
+}
+
+#light {
+  background: radial-gradient(30% 60%, circle contain, hsla(240, 100%, 20%, .25) 0%, hsla(240, 0%, 0%, 0) 100%);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+#ground {
+  background: linear-gradient(#101020, #001);
+  bottom: 0;
+  height: 30%;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+#moon {
+  background: linear-gradient(#99a, #eef);
+  border-radius: 100%;
+  bottom: 0%;
+  box-shadow: 0 0 150px hsla(0, 0%, 100%, .3);
+  height: 200px;
+  left: 30%;
+  margin: -100px 0 0 -100px;
+  position: absolute;
+  width: 200px;
+}
+
+#house {
+  background: #000;
+  bottom: 0%;
+  height: 20px;
+  left: 30%;
+  margin: 0 0 0 -15px;
+  position: absolute;
+  width: 30px;
+}
+
+#house:before {
+  background: #000;
+  content: '';
+  display: block;
+  height: 12px;
+  left: 21px;
+  margin: 0 0 0 0;
+  position: absolute;
+  top: -15px;
+  width: 6px;
+  z-index: 2;
+}
+
+#house:after {
+  border-bottom: 15px solid #000;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  content: '';
+  display: block;
+  height: 0;
+  left: 50%;
+  margin: 0 0 0 -20px;
+  position: absolute;
+  top: -15px;
+  width: 0;
+}
+
+.container {
+  display: block;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 960px;
+  width: 100%;
+}
+
+.section {
+  clear: both;
+  marign: 0px;
+  padding: 0px;
+}
+
+.col {
+  display: block;
+  float: left;
+  margin: -16% 0 1% 28%;
+}
+
+.group:before, .group:after {
+  content: "";
+  display: table;
+}
+
+.group:after {
+  clear: both;
+}
+
+.group {
+  zoom: 1;
+}
+
+.half {
+  width: 47%;
+}
+
+.delay-half {
+  animation-delay: 0.5s;
+  moz-animation-delay: 0.5s;
+  webkit-animation-delay: 0.5s;
+}
+
+.delay-one {
+  animation-delay: 1s;
+  moz-animation-delay: 1s;
+  webkit-animation-delay: 1s;
+}
+
+p {
+  color: #657B83;
 }
 
 a {
-  color: #2aa198;
-  text-decoration: none;
   border-bottom: 1px dotted;
+  color: #C5C5D6;
+  text-decoration: none;
 }
 
 a:hover {
   color: #d33682;
 }
 
-
-/* header */
+body {
+  color: #657b83;
+  font-family: 'Open Sans', Arial, sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
 
 #header {
-  background-color: #073642;
-  position: relative;
-  z-index: 1;
+  background-color: #0F0F1F;
   overflow: hidden;
   padding-bottom: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 h1 {
+  color: #ffffff;
   font-size: 90px;
   font-weight: bold;
-  color: #ffffff;
   margin-bottom: 10px;
 }
-
 .slogan {
+  color: #657B83;
   font-size: 30px;
-  color: #eee8d5;
   margin: 0px;
 }
 
 #draw {
+  display: block;
+  left: 0;
   position: absolute;
   top: 0;
-  left: 0;
   z-index: -1;
-  display: block;
 }
-
-
-/* highlights */
 
 .school {
   color: #b58900;
@@ -74,22 +206,24 @@ h1 {
   color: #93a1a1;
 }
 
-
-/* Sections */
+h2 {
+  color: #586e75;
+  font-size: 30px;
+}
 
 .container {
-  max-width: 960px;
   display: block;
+  height: 100%;
   margin-left: auto;
   margin-right: auto;
+  max-width: 960px;
   width: 100%;
-  height: 100%;
 }
 
 .section {
   clear: both;
-  padding: 0px;
   margin: 0px;
+  padding: 0px;
 }
 
 .group:before, .group:after {
@@ -104,9 +238,6 @@ h1 {
 .group {
   zoom: 1;
 }
-
-
-/* Columns */
 
 .col {
   display: block;
@@ -134,19 +265,16 @@ h1 {
   width: 100%;
 }
 
-
-/* Animations */
-
 .delay-half {
-  -webkit-animation-delay: 0.5s;
-  -moz-animation-delay: 0.5s;
   animation-delay: 0.5s;
+  moz-animation-delay: 0.5s;
+  webkit-animation-delay: 0.5s;
 }
 
 .delay-one {
-  -webkit-animation-delay: 1s;
-  -moz-animation-delay: 1s;
   animation-delay: 1s;
+  moz-animation-delay: 1s;
+  webkit-animation-delay: 1s;
 }
 
 .inlist li {
@@ -155,7 +283,6 @@ h1 {
 }
 
 .inlist li + li:before {
-  /* To anyone reading the CSS, yes I know this isn't a linked list. */
   content: '\2022';
   font-size: 20px;
   padding: 0 5px;
@@ -164,9 +291,6 @@ h1 {
 #footer {
   text-align: center;
 }
-
-
-/* Responsive */
 
 @media only screen and (min-width: 768px) and (max-width: 959px) {
   h1 {
@@ -185,8 +309,8 @@ h1 {
     padding-bottom: 10px;
   }
 }
-
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767px)
+{
   h1 {
     font-size: 40px;
   }
@@ -225,8 +349,8 @@ h1 {
   }
 
   .inlist li {
-    font-size: inherit;
     display: list-item;
+    font-size: inherit;
   }
 
   .inlist li + li:before {
