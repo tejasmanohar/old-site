@@ -268,15 +268,15 @@ h2 {
 }
 
 .delay-half {
-  animation-delay: 0.5s;
-  moz-animation-delay: 0.5s;
-  webkit-animation-delay: 0.5s;
+  -animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  -webkit-animation-delay: 0.5s;
 }
 
 .delay-one {
-  animation-delay: 1s;
-  moz-animation-delay: 1s;
-  webkit-animation-delay: 1s;
+  -animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  -webkit-animation-delay: 1s;
 }
 
 .inlist li {
