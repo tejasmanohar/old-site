@@ -21,7 +21,7 @@ canvas {
 }
 
 #cvas {
-  height: 500px;
+  height: calc(100vh - 425px);
   position: relative;
   width: 100%;
 }
