@@ -1,8 +1,10 @@
 var gulp = require('gulp');
 
+var download = require('gulp-download');
 var gulpif = require('gulp-if');
 var minifyCss = require('gulp-minify-css');
 var minifyHtml = require('gulp-minify-html');
+var rename = require('gulp-rename');
 var rev = require('gulp-rev');
 var revReplace = require('gulp-rev-replace');
 var rimraf = require('rimraf');
@@ -31,4 +33,10 @@ gulp.task('dist-index', ['clean'], function() {
 
 });
 
-gulp.task('default', ['dist-index']);
+gulp.task('resume', function() {
+  download('https://github.com/tejasmanohar/resume/blob/master/resume.pdf?raw=true')
+    .pipe(rename('resume.pdf'))
+    .pipe(gulp.dest('./'));
+});
+
+gulp.task('default', ['dist-index', 'resume']);
