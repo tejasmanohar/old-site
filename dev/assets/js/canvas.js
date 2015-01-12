@@ -12,6 +12,11 @@ var rand = function(a, b) {
   return ~~((Math.random() * (b - a + 1)) + a);
 }
 
+window.onresize = function() {
+  cw = c.width = window.innerWidth;
+  ch = c.height = window.innerHeight * .7;
+};
+
 updateAll = function(a) {
   var i = a.length;
   while (i--) {
