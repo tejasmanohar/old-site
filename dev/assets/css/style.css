@@ -311,8 +311,8 @@ h2 {
 }
 @media only screen and (max-width: 767px)
 {
-  .cvas {
-    height: 200px;
+  #cvas {
+    height: 250px;
   }
   h1 {
     font-size: 40px;
