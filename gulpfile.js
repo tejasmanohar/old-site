@@ -17,7 +17,7 @@ gulp.task('clean', function(cb) {
 
 gulp.task('copy', function() {
   return gulp.src('dev/assets/img/*')
-    .pipe(gulp.dest('./'));
+    .pipe(gulp.dest('./assets/img'));
 });
 
 gulp.task('dist-index', ['clean', 'copy'], function() {
