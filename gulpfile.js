@@ -15,7 +15,12 @@ gulp.task('clean', function(cb) {
   rimraf('./dist/', cb);
 });
 
-gulp.task('dist-index', ['clean'], function() {
+gulp.task('copy', function() {
+  return gulp.src('dev/assets/img/*')
+    .pipe(gulp.dest('./'));
+});
+
+gulp.task('dist-index', ['clean', 'copy'], function() {
   var assets = useref.assets();
 
   return gulp.src('dev/index.html')
